@@ -9,7 +9,8 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Pricing } from './components/Pricing/Pricing'
 import { Rating } from './components/Rating/Rating'
 import { Cart } from './components/Cart/Cart'
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const fetchCard = async () => {
   const res = await fetch("/data.json");
@@ -29,7 +30,7 @@ function App() {
        cart={cart} 
        setselectType={setselectType} 
      />
-
+      <ToastContainer />
      <Hero></Hero>
      <Rating/>
 

@@ -1,13 +1,15 @@
 import { IoMdCheckmark } from "react-icons/io";
 import { use } from "react";
+import { toast } from 'react-toastify';
 export const Cards = ({AllCards ,cart , setcart , setselectType , selectType}) => {
   const CardData = use(AllCards)
 
   const AddToCart = (card) => {
     const filtered = cart.filter(item => item.id !== card.id)
     setcart([...filtered , card])
+    
   }
-     
+     const notify = () => toast.success("Added to cart");
   return (
     <> 
     <div className='text-center space-y-2.5 mt-4 '>
@@ -66,7 +68,7 @@ export const Cards = ({AllCards ,cart , setcart , setselectType , selectType}) =
                 </ul>
                 <div>
                   <button 
-                  onClick={() => AddToCart(card)  }
+                 onClick={() => {AddToCart(card);notify();}}
                   className=' px-30 py-2 rounded-xl bg-gradient-to-r from-[#4F39FA] to-[#9514FA] text-white font-semibold'>
                   Buy Now
                 </button> 

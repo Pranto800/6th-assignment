@@ -1,9 +1,11 @@
 import React from 'react'
 import { FaShoppingCart } from "react-icons/fa";
+import { toast } from 'react-toastify';
 
-import emptyCart from '../../assets/shoppingCart.png'
 
 export const Cart = ({cart , setcart , setselectType}) => {
+  const Remove = () => toast.error("Remove to cart 😲");
+   const Checkout = () => toast.success("All cards Checkout ☺️");
   return (
     <div className='max-w-2xl mx-auto'>
 
@@ -16,7 +18,7 @@ export const Cart = ({cart , setcart , setselectType}) => {
             className='px-3 py-1 rounded-xl font-semibold text-gray-700'>
             Products
           </button>
-
+          
           <button 
             className='bg-gradient-to-r from-[#4F39FA] to-[#9514FA] text-white px-3 py-1 rounded-xl font-semibold'>
             Cart({cart.length})
@@ -47,7 +49,7 @@ export const Cart = ({cart , setcart , setselectType}) => {
                 <button 
                   onClick={() => {
                     const filtered = cart.filter(i => i.id !== item.id)
-                    setcart(filtered)
+                    setcart(filtered) ; Remove()
                   }}
                   className='text-red-500 text-sm'>
                   Remove
@@ -61,7 +63,7 @@ export const Cart = ({cart , setcart , setselectType}) => {
             </div>
 
             <button 
-              onClick={() => setcart([])}
+              onClick={() => {setcart([]) , Checkout() } }
               className='w-full mt-6 py-3 bg-gradient-to-r from-[#4F39FA] to-[#9514FA] text-white rounded-xl font-semibold'>
               Proceed To Checkout
             </button>
