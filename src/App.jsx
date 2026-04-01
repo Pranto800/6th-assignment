@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { Cards } from './components/Cards/Cards'
 import { Footer } from './components/Footer/Footer'
@@ -9,56 +9,61 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Pricing } from './components/Pricing/Pricing'
 import { Rating } from './components/Rating/Rating'
 import { Cart } from './components/Cart/Cart'
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-const fetchCard = async () => {
-  const res = await fetch("/data.json");
-  const data = await res.json()
-  return data ;
-}
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+</style>
 
 function App() {
-  const AllCards = fetchCard()
-  const  [ cart , setcart] = useState([])
-  const [selectType , setselectType] = useState("products")
+
+  const [AllCards, setAllCards] = useState([])
+  const [cart, setcart] = useState([])
+  const [selectType, setselectType] = useState("products")
+
+  useEffect(() => {
+    fetch("/data.json")
+      .then(res => res.json())
+      .then(data => setAllCards(data))
+  }, [])
 
   return (
     <>
-    <div >
-     <Navbar  
-       cart={cart} 
-       setselectType={setselectType} 
-     />
-      <ToastContainer />
-     <Hero></Hero>
-     <Rating/>
+      <div className='pages'>
+        <Navbar cart={cart} setselectType={setselectType} />
 
-     {
-      selectType ==="products" && (
-        <Suspense fallback = {<span className="loading loading-dots loading-xl"></span>}>
-          <Cards 
-            AllCards={AllCards} 
-            setselectType={setselectType} 
-            selectType={selectType}
-            cart={cart} 
-            setcart={setcart}
-          />
-        </Suspense>
-      )
-     }
+        <ToastContainer />
 
-     {
-      selectType ==="cart" && (
-       <Cart cart={cart} setcart={setcart} setselectType={setselectType} />
-      )
-     }
+        <Hero />
+        <Rating />
 
-     <MidSection/>
-     <Pricing/>
-     <Geadient/>
-     <Footer/>
-    </div>
+        {
+          selectType === "products" && (
+            <Cards 
+              AllCards={AllCards}
+              setselectType={setselectType}
+              selectType={selectType}
+              cart={cart}
+              setcart={setcart}
+            />
+          )
+        }
+
+        {
+          selectType === "cart" && (
+            <Cart 
+              cart={cart} 
+              setcart={setcart} 
+              setselectType={setselectType} 
+            />
+          )
+        }
+
+        <MidSection />
+        <Pricing />
+        <Geadient />
+        <Footer />
+      </div>
     </>
   )
 }

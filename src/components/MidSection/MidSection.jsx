@@ -9,13 +9,13 @@ import rocket from '../../assets/rocket.png'
 export const MidSection = () => {
   return (
     < >
-     <div className='space-y-5 mt-10'>
+     <div className='space-y-5 mt-10 px-4 sm:px-6'>
         <div className='flex flex-col items-center text-center space-y-5'>
-            <h1 className='font-bold text-3xl '>Get Started in 3 Steps</h1>
-            <p className='text-[#627382] text-[16px]'>Start using premium digital tools in minutes, not hours.</p>
+            <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800'>Get Started in 3 Steps</h1>
+            <p className='text-[#627382] text-[14px] sm:text-[16px]'>Start using premium digital tools in minutes, not hours.</p>
         </div>
-        <div className='grid grid-cols-3   place-items-center'>
-            <div className='w-[320px] h-[300px] bg-white/60 flex items-center text-accent rounded-3xl shadow-lg p-[20px] relative'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-6'>
+            <div className='w-full max-w-[320px] h-[300px] bg-white/60 flex items-center text-accent rounded-3xl shadow-lg p-[20px] relative'>
                    <img src={img1} className='w-[30px] h-[30px] absolute top-2 right-2 mt-2.5 ' ></img>
                   <div className='flex flex-col justify-center text-center items-center'>
                     <img src={user} className='w-[50px] h-[50px] bg-[url(${Ellipse})] '></img>
@@ -25,7 +25,7 @@ export const MidSection = () => {
             </div>
 
 
-            <div className='w-[320px] h-[300px] bg-white/60 flex items-center text-accent rounded-3xl shadow-lg p-[20px] relative'>
+            <div className='w-full max-w-[320px] h-[300px] bg-white/60 flex items-center text-accent rounded-3xl shadow-lg p-[20px] relative'>
                    <img src={img2} className='w-[30px] h-[30px] absolute top-2 right-2 mt-2.5 ' ></img>
                   <div className='flex flex-col justify-center text-center items-center'>
                     <img src={Package} className='w-[50px] h-[50px] bg-[url(${Ellipse})] '></img>
@@ -34,7 +34,7 @@ export const MidSection = () => {
                   </div>
             </div>
 
-            <div className='w-[320px] h-[300px] bg-white/60 flex items-center text-accent rounded-2xl shadow-lg p-[20px] relative'>
+            <div className='w-full max-w-[320px] h-[300px] bg-white/60 flex items-center text-accent rounded-2xl shadow-lg p-[20px] relative'>
                    <img src={img3} className='w-[30px] h-[30px] absolute top-2 right-2 mt-2.5 ' ></img>
                   <div className='flex flex-col justify-center text-center items-center'>
                     <img src={rocket} className='w-[50px] h-[50px] bg-[url(${Ellipse})] '></img>
@@ -44,9 +44,6 @@ export const MidSection = () => {
             </div>
         </div>
      </div>   
-
-
-
     </>
   )
 }
