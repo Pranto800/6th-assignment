@@ -20,7 +20,7 @@ export const Hero = () => {
             </div>
         </div>
         <div className='flex justify-center'>
-            <img className='h-[250px] sm:h-[300px] md:h-[350px] w-auto' src={banner}></img>
+            <img className='h-[250px] sm:h-[300px] md:h-[350px] shadow-2xl w-auto' src={banner}></img>
         </div>
     </div>
   )

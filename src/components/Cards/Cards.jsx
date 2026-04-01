@@ -1,19 +1,23 @@
 import { IoMdCheckmark } from "react-icons/io";
 import { toast } from 'react-toastify';
+import { useState } from "react";
 
 export const Cards = ({AllCards ,cart , setcart , setselectType , selectType}) => {
   const CardData = AllCards
 
+  const [added, setAdded] = useState([])
+
   const AddToCart = (card) => {
     const filtered = cart.filter(item => item.id !== card.id)
     setcart([...filtered , card])
+    setAdded([...added, card.id])
   }
 
   const notify = () => toast.success("Added to cart");
 
   return (
     <> 
-    <div className='text-center space-y-2.5 mt-4 px-4'>
+    <div className='text-center space-y-2.5 mt-10 px-4'>
       <h1 className='text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800'>Premium Digital Tools</h1>
 
       <p className='text-[14px] text-[#627382]'>
@@ -21,7 +25,7 @@ export const Cards = ({AllCards ,cart , setcart , setselectType , selectType}) =
         to boost your productivity and creativity.
       </p>
 
-      <div className='flex text-center justify-around px-2 py-2 m-auto shadow-2xl rounded-2xl w-[200px] h-[58px] border-white border-1'>
+      <div className='flex text-center justify-around px-2 py-2 m-auto  shadow-2xl rounded-2xl w-[200px] h-[58px] border-white border-1'>
         <button 
           onClick={() => setselectType("products")}
           className={`${selectType === "products" ? "bg-gradient-to-r from-[#4F39FA] to-[#9514FA] text-white" : "text-gray-700"} px-3 py-1 rounded-xl font-semibold`}>
@@ -61,13 +65,26 @@ export const Cards = ({AllCards ,cart , setcart , setselectType , selectType}) =
                   <li><IoMdCheckmark className='text-green-400' /> {card.features[1]}</li>
                   <li><IoMdCheckmark className='text-green-400' /> {card.features[2]}</li>
                 </ul>
+
                 <div>
-                  <button type="button"
+                  <button
+                    type="button"
                     onClick={() => { AddToCart(card); notify(); }}
-                    className='px-30 py-2 rounded-xl bg-gradient-to-r from-[#4F39FA] to-[#9514FA] text-white font-semibold'>
-                    Buy Now
+                    className={`w-[300px] py-2 rounded-2xl text-white font-semibold
+                    ${added.includes(card.id)
+                      ? "bg-green-500 px-0 py-0"
+                      : "bg-gradient-to-r from-[#4F39FA] to-[#9514FA]"
+                    }`}
+                  >
+                   {added.includes(card.id) ? (
+    <span className="flex items-center justify-center gap-2">
+      <IoMdCheckmark className="text-white" />
+      Added to Cart
+    </span>
+  )   : "Buy Now"}
                   </button> 
                 </div>
+
               </div>
             </div>
           )

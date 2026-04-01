@@ -3,7 +3,7 @@ import shoppingCart from '../../assets/shoppingCart.png'
 
 export const Navbar = ({cart , setselectType}) => {
   return (
-    <div className='max-w-6xl mx-auto'>
+    <div className='max-w-6xl mx-auto px-4 '>
       <div className="navbar bg-base-100 shadow-sm">
 
         <div className="navbar-start">
@@ -34,7 +34,7 @@ export const Navbar = ({cart , setselectType}) => {
           </ul>
         </div>
 
-        <div className="navbar-end gap-7">
+        <div className="navbar-end gap-2 sm:gap-4 md:gap-7">
 
           <div 
             className="relative cursor-pointer"
@@ -51,9 +51,9 @@ export const Navbar = ({cart , setselectType}) => {
             }
           </div>
 
-          <h1>Login</h1>
+          <h1 className='hidden sm:block'>Login</h1>
 
-          <a className="btn rounded-2xl bg-gradient-to-r from-[#4F39F6] to-[#9514FA] text-white px-6 py-3 rounded-full">
+          <a className="btn rounded-2xl bg-gradient-to-r from-[#4F39F6] to-[#9514FA] text-white px-3 sm:px-6 py-3 rounded-full text-sm sm:text-base">
             Get Started
           </a>
 
